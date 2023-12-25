@@ -1,0 +1,38 @@
+# Plotly
+
+```{r}
+data('airmiles')
+airmiles
+# Time Series:
+# Start = 1937 
+# End = 1960     
+# Frequency = 1 
+```
+
+```{r}
+suppressMessages(plot_ly(x = time(airmiles), y = airmiles))
+```
+
+```{r, echo=F, message = F}
+library(plotly)
+plot_ly(x = time(airmiles), y = airmiles)
+```
+
+```{r, eval=F}
+plot_ly(x = time(airmiles), y = airmiles)
+```
+
+```{r}
+library(tidyr)
+library(dplyr)
+
+data("EuStockMarkets")
+head(EuStockMarkets)
+```
+```{r}
+stocks <- as.data.frame(EuStockMarkets) %>% 
+  gather(index, price) %>% 
+  mutate(time = rep(time(EuStockMarkets), 4))
+
+plot_ly(stocks, x = stocks$time, y = stocks$price, color = stocks$index)
+```

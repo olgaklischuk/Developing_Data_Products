@@ -1,0 +1,36 @@
+---
+title: "My Prezentation"
+author: "Olha Klishchuk"
+date: "2023-12-24"
+output: html_document
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## My Prezentation 
+
+Plain text could be displayed in 
+*italicized* and
+**bold formats**. 
+
+## Data
+```{r mtcars, echo = T}
+head(mtcars)
+```
+
+## Next Slide
+```{r, echo = F, fig.align = 'center', fig.cap = 'My cars figure'}
+with(mtcars,plot( wt, mpg, xlab = 'Weight', ylab = 'MPG', col = rgb(0, 0, 250, max= 255, alpha = 65), pch = 19, cex = 2))
+
+```
+
+
+## Pressure
+```{r pressure, fig.align = 'center', echo = TRUE}
+
+with(pressure, plot(temperature, pressure, pch = 19, cex = 1.5, col = rgb(0, 250, 0, max = 255, alpha = 65)))
+```
+
+

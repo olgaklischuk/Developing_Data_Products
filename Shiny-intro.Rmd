@@ -1,0 +1,42 @@
+---
+title: "Shiny_intro"
+author: "Olha Klishchuk"
+date: "2023-11-15"
+output: html_document
+---
+
+## R Shiny App
+
+```{r}
+# Uninstall the fastmap package from the system library folder
+# remove.packages("fastmap", lib = "C:/Users/Lenovo/AppData/Local/R/win-library/4.2")
+
+```
+
+```{r }
+install.packages('shiny')
+library(shiny)
+```
+```{r}
+# If previous step didn't work
+# Install and load the devtools package if you haven't already
+if (!requireNamespace("devtools", quietly = TRUE)) {
+  install.packages("devtools")
+}
+
+# Install fastmap version 1.1.1 in user library
+```
+
+
+```{r}
+devtools::install_github("mkearney/rmd2jupyter")
+library(rmd2jupyter)
+
+```
+```{r}
+#Duplicate in .ipunb file
+rmd2jupyter("Shiny-intro.Rmd")
+```
+
+
+

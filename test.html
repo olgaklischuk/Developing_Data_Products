@@ -1,0 +1,152 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "https://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="https://www.w3.org/1999/xhtml">
+<head>
+<title>GeoChartID22145b8d3d68</title>
+<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+<style type="text/css">
+body {
+  color: #444444;
+  font-family: Arial,Helvetica,sans-serif;
+  font-size: 75%;
+  }
+  a {
+  color: #4D87C7;
+  text-decoration: none;
+}
+</style>
+</head>
+<body>
+ <!-- GeoChart generated in R 4.3.2 by googleVis 0.7.1 package -->
+<!-- Fri Dec 15 17:15:31 2023 -->
+
+
+<!-- jsHeader -->
+<script type="text/javascript">
+ 
+// jsData 
+function gvisDataGeoChartID22145b8d3d68 () {
+var data = new google.visualization.DataTable();
+var datajson =
+[
+ [
+"Germany",
+3
+],
+[
+"Brazil",
+4
+],
+[
+"United States",
+5
+],
+[
+"France",
+4
+],
+[
+"Hungary",
+3
+],
+[
+"India",
+2
+],
+[
+"Iceland",
+1
+],
+[
+"Norway",
+4
+],
+[
+"Spain",
+5
+],
+[
+"Turkey",
+1
+] 
+];
+data.addColumn('string','Country');
+data.addColumn('number','Profit');
+data.addRows(datajson);
+return(data);
+}
+ 
+// jsDrawChart
+function drawChartGeoChartID22145b8d3d68() {
+var data = gvisDataGeoChartID22145b8d3d68();
+var options = {};
+options["width"] = 600;
+options["height"] = 400;
+
+
+    var chart = new google.visualization.GeoChart(
+    document.getElementById('GeoChartID22145b8d3d68')
+    );
+    chart.draw(data,options);
+    
+
+}
+  
+ 
+// jsDisplayChart
+(function() {
+var pkgs = window.__gvisPackages = window.__gvisPackages || [];
+var callbacks = window.__gvisCallbacks = window.__gvisCallbacks || [];
+var chartid = "geochart";
+  
+// Manually see if chartid is in pkgs (not all browsers support Array.indexOf)
+var i, newPackage = true;
+for (i = 0; newPackage && i < pkgs.length; i++) {
+if (pkgs[i] === chartid)
+newPackage = false;
+}
+if (newPackage)
+  pkgs.push(chartid);
+  
+// Add the drawChart function to the global list of callbacks
+callbacks.push(drawChartGeoChartID22145b8d3d68);
+})();
+function displayChartGeoChartID22145b8d3d68() {
+  var pkgs = window.__gvisPackages = window.__gvisPackages || [];
+  var callbacks = window.__gvisCallbacks = window.__gvisCallbacks || [];
+  window.clearTimeout(window.__gvisLoad);
+  // The timeout is set to 100 because otherwise the container div we are
+  // targeting might not be part of the document yet
+  window.__gvisLoad = setTimeout(function() {
+  var pkgCount = pkgs.length;
+  google.load("visualization", "1", { packages:pkgs, callback: function() {
+  if (pkgCount != pkgs.length) {
+  // Race condition where another setTimeout call snuck in after us; if
+  // that call added a package, we must not shift its callback
+  return;
+}
+while (callbacks.length > 0)
+callbacks.shift()();
+} });
+}, 100);
+}
+ 
+// jsFooter
+</script>
+ 
+<!-- jsChart -->  
+<script type="text/javascript" src="https://www.google.com/jsapi?callback=displayChartGeoChartID22145b8d3d68"></script>
+ 
+<!-- divChart -->
+  
+<div id="GeoChartID22145b8d3d68" 
+  style="width: 600; height: 400;">
+</div>
+ <div><span>Data: Exports &#8226; Chart ID: <a href="Chart_GeoChartID22145b8d3d68.html">GeoChartID22145b8d3d68</a> &#8226; <a href="https://mages.github.io/googleVis/">googleVis-0.7.1</a></span><br /> 
+<!-- htmlFooter -->
+<span> 
+  R version 4.3.2 (2023-10-31 ucrt) 
+  &#8226; <a href="https://developers.google.com/terms/">Google Terms of Use</a> &#8226; <a href="https://developers.google.com/chart/interactive/docs/gallery/geochart">Documentation and Data Policy</a>
+</span></div>
+</body>
+</html>
