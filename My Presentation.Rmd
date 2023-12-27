@@ -1,5 +1,5 @@
 ---
-title: "My Prezentation"
+title: "My Presentation"
 author: "Olha Klishchuk"
 date: "2023-12-24"
 output: html_document
@@ -33,4 +33,9 @@ with(mtcars,plot( wt, mpg, xlab = 'Weight', ylab = 'MPG', col = rgb(0, 0, 250, m
 with(pressure, plot(temperature, pressure, pch = 19, cex = 1.5, col = rgb(0, 250, 0, max = 255, alpha = 65)))
 ```
 
+# Ways to discaminate R Markdown
+
+- [GithubPages](https://pages.github.com/)
+- [RPubs](http://rpubs.com/)
+- [NeoCities](https://neocities.org/) is very helpful for free hosting HTML file for free. 
 
