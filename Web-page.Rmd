@@ -1,0 +1,49 @@
+---
+title: "Map"
+date: "2024-01-03"
+output: html_document
+---
+
+## Map of shelters and points of invinsibility
+ 
+Map of bomb shelters and points of invincibility used during air attacks.
+
+Disclaimer: Map is not illustrate a real location of shelters due to the security reasons. 
+```{r, echo = F, warning=FALSE}
+suppressPackageStartupMessages(
+library(dplyr)
+  )
+library(leaflet)
+
+df <- data.frame(lat = runif(20, 50.40, 50.50), lng = runif(20, 30.35, 30.45), col = sample(c('red', 'blue','green'), 20, replace = T), stringAsFactor = F)
+
+suppressMessages(
+  df %>% 
+  leaflet() %>% 
+  addTiles() %>% 
+  addCircleMarkers(color = df$col) %>% 
+  addLegend(labels = c('bomb shelters', 'points of invincibility (charging and heating station)', 'others'), colors = c("blue", "red","green"))
+    )
+```
+Disclaimer: Map is not illustrate real location of shelters due to security reasons. 
+
+# Population density
+
+Disclaimer: data on the population density is randomly simulated and is not reliable
+```{r, echo = F}
+district <- data.frame(
+                        pop = runif(30, min = min(61493, 66169, 62334, 61045, 55232,
+                                39890, 38880, 30587, 30484, 25346), 
+                                max = c(61493, 66169, 62334, 61045, 55232,
+                                39890, 38880, 30587, 30484, 25346)),
+                        lat = runif(30, 50.40, 50.50),
+                        lng = runif(30, 30.35, 30.45))
+
+suppressMessages(
+  district %>% 
+  leaflet() %>% 
+  addTiles() %>% 
+  addCircleMarkers(weight = 1, radius = sqrt(district$pop)/20) %>% 
+  addRectangles(lng1 = 30.35,lat1 = 50.4, lng2 = 30.45, lat2 = 50.5))
+```
+Disclaimer: data on the population density is randomly simulated and is not reliable.

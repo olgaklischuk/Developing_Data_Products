@@ -1,0 +1,27 @@
+---
+title: "Map"
+date: "2023-12-30"
+output: html_document
+---
+
+## Map of shelters and points of invinsibility
+ 
+Map of bomb shelters and points of invincibility during air attacks.
+```{r, echo = F, warning=FALSE}
+suppressPackageStartupMessages(
+library(dplyr)
+  )
+library(leaflet)
+
+df <- data.frame(lat = runif(20, 50.40, 50.50), lng = runif(20, 30.35, 30.45), col = sample(c('red', 'blue','green'), 20, replace = T), stringAsFactor = F)
+
+suppressMessages(
+  df %>% 
+  leaflet() %>% 
+  addTiles() %>% 
+  addCircleMarkers(color = df$col) %>% 
+  addLegend(labels = c('bomb shelters', 'points of invincibility (charging and heating station)', 'others'), colors = c("blue", "red","green"))
+  )
+```
+
+
