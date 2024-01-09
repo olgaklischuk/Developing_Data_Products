@@ -1,0 +1,98 @@
+---
+title: "My presentation: \n Economic Outlook"
+author: "Olha Klishchuk"
+date: "January 4, 2024"
+output: html_document
+---
+
+```{r, echo=F, include = F, comment = ''}
+df <- EuStockMarkets
+head(df) #1860 obs.
+```
+
+# EU Stock Market
+
+```{r, echo = F}
+suppressPackageStartupMessages(library(dplyr))
+library(tidyr)
+suppressPackageStartupMessages(library(plotly))
+
+stocks <- as.data.frame(EuStockMarkets) %>% 
+  gather(index, price) %>% 
+  mutate(time = rep(time(EuStockMarkets), 4))
+
+fig1 <- plot_ly(stocks, x = stocks$time, y = stocks$price, color = stocks$index) %>% 
+       add_trace(type = 'scatter', mode = 'lines', fill = 'tozeroy', fillcolor = stocks$index,
+            line = list(color = stocks$index), showlegend = T) %>%
+       add_trace(x = NULL, y = NULL, showlegend = TRUE,
+            legendgroup = 'Recessions', name = 'Recession Period',
+            type = 'scatter', mode = 'markers', marker = list(color = 'rgba(255,0,0,0.3)'),
+            hoverinfo = 'none') %>%
+#add recession shades
+     layout( title = 'Stock market amid economic recessions \n (economic recessions highlighted by pink shades)',
+                 shapes = list(
+                   list(type = "rect",
+                       fillcolor = "red", line = list(color = "red"), opacity = 0.3,
+                       x0 = "1991", x1 = "1991.33", xref = "x",
+                       y0 = 0, y1 = 1, yref = "paper"),
+                   list(type = "rect",
+                        fillcolor = "red", line = list(color = "red"), opacity = 0.3,
+                        x0 = "1992.67", x1 = "1996.8", xref = "x",
+                        y0 = 0, y1 = 1, yref = "paper")
+                   # list(type = "rect",
+                   #   fillcolor = "red", line = list(color = "red"), opacity = 0.3,
+                   #   x0 = "2001-03-01", x1 = "2001-12-01", xref = "x",
+                   #   y0 = 0, y1 = 1, yref = "paper"),
+                   # list(type = "rect",
+                   #   fillcolor = "red", line = list(color = "red"), opacity = 0.2,
+                   #   x0 = "2007-12-01", x1 = "2009-07-01", xref = "x",
+                   #   y0 = 0, y1 = 1, yref = "paper")
+                 ), 
+            legend = list(itemsizing = 'trace', traceorder = 'normal'), 
+            margin = list(t = 100))
+fig1
+
+#MACD and MA
+
+```
+*Plot1*. EU stock market amid global recession trends
+
+
+# Job Market Reaction
+
+```{r, echo = F}
+library(plotly)
+
+fig2 <- suppressWarnings(plot_ly(economics, x = ~date, y = ~uempmed, name = "unemployment"))
+
+# add shapes to the layout
+fig2 <- layout(fig2, title = 'Job market amid recession periods',
+             shapes = list(
+               list(type = "rect",
+                    fillcolor = "blue", line = list(color = "blue"), opacity = 0.3,
+                    x0 = "1969-12-01", x1 = "1970-12-01", xref = "x",
+                    y0 = 0, y1 = 1, yref = "paper"),
+               list(type = "rect",
+                    fillcolor = "blue", line = list(color = "blue"), opacity = 0.3,
+                    x0 = "1973-11-01", x1 = "1975-04-01", xref = "x",
+                    y0 = 0, y1 = 1, yref = "paper"),
+               list(type = "rect",
+                    fillcolor = "blue", line = list(color = "blue"), opacity = 0.3,
+                    x0 = "1980-01-01", x1 = "1985-01-01", xref = "x",
+                    y0 = 0, y1 = 1, yref = "paper"),
+                list(type = "rect",
+                    fillcolor = "blue", line = list(color = "blue"), opacity = 0.3,
+                    x0 = "1989-11-01", x1 = "1991-04-01", xref = "x",
+                    y0 = 0, y1 = 1, yref = "paper"),
+               list(type = "rect",
+                 fillcolor = "blue", line = list(color = "blue"), opacity = 0.2,
+                 x0 = "2000-01-01", x1 = "2005-01-01", xref = "x",
+                 y0 = 0, y1 = 1, yref = "paper"),
+               list(type = "rect",
+                 fillcolor = "blue", line = list(color = "blue"), opacity = 0.3,
+                 x0 = "2007-12-01", x1 = "2009-07-01", xref = "x",
+                 y0 = 0, y1 = 1, yref = "paper")))
+
+fig2
+```
+*Plot2*. US job market amid global recession
